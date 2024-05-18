@@ -1,9 +1,10 @@
 import { Avatar, Heading, VStack } from '@chakra-ui/react';
 import FullScreenSection from './FullScreenSection';
 import mhdImage from '../photo/mhd.jpg'; 
-const greeting = 'Hello, I am MHD!';
-const bio1 = 'A frontend developer';
-const bio2 = 'specialised in React';
+const greeting = 'Je suis Mahamadou Moussa Brah!';
+const bio1 = 'Développeur Web spécialisé dans des technologies telles que HTML, CSS,';
+const bio2 = 'Bootstrap, JavaScript, React pour le Frontend et Node.js pour le Backend.';
+const bio3 = 'Je suis également blogueur et titulaire une licence en Communication.';
 
 const LandingSection = () => (
   <FullScreenSection
@@ -24,11 +25,14 @@ const LandingSection = () => (
         </Heading>
       </VStack>
       <VStack spacing={6}>
-        <Heading as="h1" size="3xl" noOfLines={1}>
+        <Heading noOfLines={1}>
           {bio1}
         </Heading>
-        <Heading as="h1" size="3xl" noOfLines={1}>
+        <Heading noOfLines={1}>
           {bio2}
+        </Heading>
+        <Heading noOfLines={1}>
+          {bio3}
         </Heading>
       </VStack>
     </VStack>

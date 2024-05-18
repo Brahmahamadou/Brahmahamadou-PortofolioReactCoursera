@@ -2,10 +2,12 @@ import { useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import {
+  faFacebook,
   faGithub,
   faLinkedin,
   faMedium,
   faStackOverflow,
+  faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
 import { Box, HStack } from '@chakra-ui/react';
 
@@ -23,12 +25,12 @@ const socials = [
     url: 'https://www.linkedin.com/in/mahamadou-moussa-brah-824735267/',
   },
   {
-    icon: faMedium,
-    url: "https://medium.com",
+    icon: faTwitter,
+    url: "https://x.com/MahamadouBrah67",
   },
   {
-    icon: faStackOverflow,
-    url: "https://stackoverflow.com",
+    icon: faFacebook,
+    url: "https://www.facebook.com/mahamadou.moussabrah",
   },
 ];
 
@@ -84,7 +86,6 @@ const Header = () => {
       transitionProperty="transform"
       transitionDuration=".3s"
       transitionTimingFunction="ease-in-out"
-      backgroundColor="#18181b"
       ref={headerRef}
     >
       <Box color="white" maxWidth="1280px" margin="0 auto">
@@ -93,6 +94,7 @@ const Header = () => {
           py={4}
           justifyContent="space-between"
           alignItems="center"
+          backgroundColor="#18181b"
         >
           <nav>
             <HStack spacing={8}>
