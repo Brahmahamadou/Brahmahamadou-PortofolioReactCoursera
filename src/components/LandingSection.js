@@ -1,6 +1,7 @@
-import { Avatar, Heading, VStack } from '@chakra-ui/react';
+import { Avatar, Heading, VStack, Text } from '@chakra-ui/react';
 import FullScreenSection from './FullScreenSection';
 import mhdImage from '../photo/mhd.jpg'; 
+
 const greeting = 'Je suis Mahamadou Moussa Brah!';
 const bio1 = 'Développeur Web spécialisé dans des technologies telles que HTML, CSS,';
 const bio2 = 'Bootstrap, JavaScript, React pour le Frontend et Node.js pour le Backend.';
@@ -11,7 +12,7 @@ const LandingSection = () => (
     justifyContent="center"
     alignItems="center"
     isDarkBackground
-    backgroundColor="#17283f"
+    backgroundColor="#1E1E1F"
   >
     <VStack spacing={16}>
       <VStack spacing={4} alignItems="center">
@@ -24,16 +25,16 @@ const LandingSection = () => (
           {greeting}
         </Heading>
       </VStack>
-      <VStack spacing={6}>
-        <Heading noOfLines={1}>
+      <VStack spacing={4} alignItems="center">
+        <Text fontSize="lg" textAlign="center">
           {bio1}
-        </Heading>
-        <Heading noOfLines={1}>
+        </Text>
+        <Text fontSize="lg" textAlign="center">
           {bio2}
-        </Heading>
-        <Heading noOfLines={1}>
+        </Text>
+        <Text fontSize="lg" textAlign="center">
           {bio3}
-        </Heading>
+        </Text>
       </VStack>
     </VStack>
   </FullScreenSection>

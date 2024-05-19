@@ -51,7 +51,7 @@ const ContactMeSection = () => {
   return (
     <FullScreenSection
       isDarkBackground
-      backgroundColor="#17283F"
+      backgroundColor="#1E1E1F"
       py={16}
       spacing={8}
     >
@@ -132,9 +132,16 @@ const ContactMeSection = () => {
               </FormControl>
               <Button
                 type="submit"
+                backgroundColor="#111111"
                 colorScheme="purple"
                 width="full"
                 isLoading={isLoading}
+                sx={{
+                  ":hover": {
+                    backgroundColor: "white",
+                    color: "black",
+                  },
+                }}
               >
                 Submit
               </Button>
