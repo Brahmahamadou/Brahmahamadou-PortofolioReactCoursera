@@ -1,15 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
   faGithub,
   faLinkedin,
-  faMedium,
-  faStackOverflow,
   faTwitter,
 } from '@fortawesome/free-brands-svg-icons';
-import { Box, HStack } from '@chakra-ui/react';
+import { Box, HStack, Text } from '@chakra-ui/react';
 
 const socials = [
   {
@@ -32,9 +30,13 @@ const socials = [
     icon: faFacebook,
     url: 'https://www.facebook.com/mahamadou.moussabrah',
   },
+  {
+    icon: faPhone,
+    number: '+22792004099',
+  },
 ];
 
-const Header = () => {
+const Header = ({ onShowAbout, onShowBlog }) => {
   const headerRef = useRef(null);
 
   useEffect(() => {
@@ -60,8 +62,11 @@ const Header = () => {
     };
   }, []);
 
-  const handleClick = (anchor) => (e) => {
+  const handleClick = (anchor, showSection) => (e) => {
     e.preventDefault();
+    if (showSection) {
+      showSection();
+    }
     const id = `${anchor}-section`;
     const element = document.getElementById(id);
     if (element) {
@@ -85,7 +90,7 @@ const Header = () => {
       transitionTimingFunction="ease-in-out"
       ref={headerRef}
       backgroundColor="#18181b"
-      zIndex={1000}  // Assurez-vous que le header reste au-dessus des autres contenus
+      zIndex={1000} // Assurez-vous que le header reste au-dessus des autres contenus
     >
       <Box color="white" maxWidth="100%" margin="0 auto">
         <HStack
@@ -96,27 +101,39 @@ const Header = () => {
         >
           <nav>
             <HStack spacing={8}>
-              {socials.map(({ icon, url }) => (
-                <a
-                  key={url}
-                  href={url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <FontAwesomeIcon icon={icon} size="2x" key={url} />
-                </a>
+              {socials.map((social, index) => (
+                social.number ? (
+                  <HStack key={index} spacing={2}>
+                    <FontAwesomeIcon icon={social.icon} size="lg" />
+                    <Text fontSize="xl" color="white">
+                      {social.number}
+                    </Text>
+                  </HStack>
+                ) : (
+                  <a
+                    key={social.url}
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FontAwesomeIcon icon={social.icon} size="2x" />
+                  </a>
+                )
               ))}
             </HStack>
           </nav>
           <nav>
             <HStack spacing={8}>
-              <a href="#projects-section" onClick={handleClick('projects')}>
+              <a href="#about" onClick={handleClick('about', onShowAbout)}>
+                About
+              </a>
+              <a href="#projects" onClick={handleClick('projects')}>
                 Projects
               </a>
-              <a href="#contactme-section" onClick={handleClick('contactme')}>
+              <a href="#contactme" onClick={handleClick('contactme')}>
                 Contact Me
               </a>
-              <a href="#blog-section" onClick={handleClick('blog')}>
+              <a href="#blog" onClick={handleClick('blog', onShowBlog)}>
                 Blog
               </a>
             </HStack>

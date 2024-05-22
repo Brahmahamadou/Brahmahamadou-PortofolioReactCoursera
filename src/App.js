@@ -8,28 +8,32 @@ import Footer from "./components/Footer";
 import { AlertProvider } from "./context/alertContext";
 import Alert from "./components/Alert";
 import BlogSection from "./components/BlogSection";
+import About from './components/About';
 
 function App() {
-  // État pour suivre si la section de blog doit être affichée
   const [showBlogSection, setShowBlogSection] = useState(false);
+  const [showAboutSection, setShowAboutSection] = useState(false);
 
-  // Fonction pour afficher la section de blog lors du clic sur le lien "Blog"
   const handleShowBlogSection = () => {
     setShowBlogSection(true);
+  };
+
+  const handleShowAboutSection = () => {
+    setShowAboutSection(true);
   };
 
   return (
     <ChakraProvider>
       <AlertProvider>
         <main>
-          <Header onShowBlog={handleShowBlogSection} />
-          <LandingSection />
-          <ProjectsSection />
-          <ContactMeSection />
+          <Header onShowAbout={handleShowAboutSection} onShowBlog={handleShowBlogSection} />
+          <div id="landing-section"><LandingSection /></div>
+          {showAboutSection && <div id="about-section"><About /></div>}
+          <div id="projects-section"><ProjectsSection /></div>
+          <div id="contactme-section"><ContactMeSection /></div>
           <Footer />
           <Alert />
-          {/* Affichez la section de blog uniquement si showBlogSection est true */}
-          {showBlogSection && <BlogSection />}
+          {showBlogSection && <div id="blog-section"><BlogSection /></div>}
         </main>
       </AlertProvider>
     </ChakraProvider>
