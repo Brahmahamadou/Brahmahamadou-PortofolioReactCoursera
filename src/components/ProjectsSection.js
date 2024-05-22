@@ -1,4 +1,5 @@
-import * as React from "react";
+// ProjectsSection.js
+import React from "react";
 import FullScreenSection from "./FullScreenSection";
 import { Box, Heading } from "@chakra-ui/react";
 import Card from "./Card";
@@ -17,16 +18,16 @@ const projects = [
     getImageSrc: () => require("../images/photo2.png"),
   },
   {
-    title: "Photo Gallery",
-    description: "A One-stop shop for photographers to share and monetize their photos, allowing them to have a second source of income",
-    url: "https://github.com/Brahmahamadou/photo-gallery",
-    getImageSrc: () => require("../images/photo3.jpg"),
+    title: "Project BubdetApp",
+    description: "C'est une App qu'elle peut te permettre de gerer te budget",
+    url: "https://brahmahamadou.github.io/ProjetBudgetApp/",
+    getImageSrc: () => require("../images/photo3.png"),
   },
   {
-    title: "Event planner",
-    description: "A mobile application for leisure seekers to discover unique events and activities in their city with a few taps",
-    url: "https://github.com/Brahmahamadou/event-planner",
-    getImageSrc: () => require("../images/photo4.jpg"),
+    title: "Project TodoList",
+    description: "C'est une App qui va te permettre de gerer tes taches quotidiens",
+    url: "https://brahmahamadou.github.io/ProjetToDoListe/",
+    getImageSrc: () => require("../images/photo4.png"),
   },
 ];
 
@@ -55,6 +56,8 @@ const ProjectsSection = () => {
             description={project.description}
             url={project.url}
             imageSrc={project.getImageSrc()}
+            height="500px"
+            // Spécifiez la hauteur souhaitée ici
           />
         ))}
       </Box>
