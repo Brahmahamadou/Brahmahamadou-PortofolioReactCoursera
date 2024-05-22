@@ -5,16 +5,16 @@ import Card from "./Card";
 
 const projects = [
   {
-    title: "React Space",
-    description: "Handy tool belt to create amazing AR components in a React app, with redux integration via middleware️",
-    url: "https://github.com/Brahmahamadou/react-space",
-    getImageSrc: () => require("../images/photo1.jpg"),
+    title: "HTML CSS JS",
+    description: "J'ai travaillé avec plaisir sur le site web pour Ninetech pour le hackathon en utilisant HTML, CSS et JavaScript. Il s'agissait d'un travail de groupe de cinq personnes dont je faisais partie.",
+    url: "https://siteninetech.onrender.com/",
+    getImageSrc: () => require("../images/photo1.png"),
   },
   {
-    title: "React Infinite Scroll",
-    description: "A scrollable bottom sheet with virtualisation support, native animations at 60 FPS and fully implemented in JS land 🔥️",
-    url: "https://github.com/Brahmahamadou/react-infinite-scroll",
-    getImageSrc: () => require("../images/photo2.jpg"),
+    title: "HTML CSS JS",
+    description: "Project Inval",
+    url: "https://brahmahamadou.github.io/EnvalIntra-CodeLoccol/",
+    getImageSrc: () => require("../images/photo2.png"),
   },
   {
     title: "Photo Gallery",
