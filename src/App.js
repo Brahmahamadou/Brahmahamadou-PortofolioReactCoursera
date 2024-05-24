@@ -28,7 +28,7 @@ function App() {
         <main>
           <Header onShowAbout={handleShowAboutSection} onShowBlog={handleShowBlogSection} />
           <div id="landing-section"><LandingSection /></div>
-          {showAboutSection && <div id="about-section"><About /></div>}
+          <div id="about-section"><About /></div>
           <div id="projects-section"><ProjectsSection /></div>
           <div id="contactme-section"><ContactMeSection /></div>
           <Footer />

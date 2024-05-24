@@ -10,7 +10,7 @@ const About = () => {
     <div className="contenant">
       <Avatar
         src={mhdImage2}
-        boxSize="200px" // Ajustez cette valeur pour agrandir l'image
+        boxSize="600px" // Ajustez cette valeur pour agrandir l'image
         name="MHD"
         borderRadius="15px" // Rayon de bordure pour arrondir les coins
       />
