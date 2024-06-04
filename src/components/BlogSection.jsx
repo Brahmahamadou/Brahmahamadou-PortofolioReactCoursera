@@ -1,27 +1,43 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const BlogSection = () => {
-  // Exemple de données pour les articles de blog
-  const blogPosts = [
-    {
-      id: 1,
-      title: "Titre de l'article 1",
-      content: "Contenu de l'article 1...",
-    },
-    {
-      id: 2,
-      title: "Titre de l'article 2",
-      content: "Contenu de l'article 2...",
-    },
-    // Ajoutez d'autres articles de blog ici
-  ];
+  const [title, setTitle] = useState('');
+  const [content, setContent] = useState('');
+  const [blogPosts, setBlogPosts] = useState([]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const newPost = { title, content };
+    setBlogPosts([...blogPosts, newPost]);
+    // Réinitialiser les champs du formulaire après la soumission
+    setTitle('');
+    setContent('');
+  };
 
   return (
     <section id="blog-section">
       <h2>Blog</h2>
+      {/* Formulaire de rédaction d'article */}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Titre de l'article"
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          required
+        />
+        <textarea
+          placeholder="Contenu de l'article"
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          required
+        ></textarea>
+        <button type="submit">Publier</button>
+      </form>
+      {/* Affichage des articles */}
       <div>
-        {blogPosts.map((post) => (
-          <div key={post.id}>
+        {blogPosts.map((post, index) => (
+          <div key={index}>
             <h3>{post.title}</h3>
             <p>{post.content}</p>
           </div>

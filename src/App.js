@@ -30,10 +30,10 @@ function App() {
           <div id="landing-section"><LandingSection /></div>
           <div id="about-section"><About /></div>
           <div id="projects-section"><ProjectsSection /></div>
+          <div id="blog-section"><BlogSection /></div> {/* Déplacez cette ligne ici */}
           <div id="contactme-section"><ContactMeSection /></div>
           <Footer />
           <Alert />
-          {showBlogSection && <div id="blog-section"><BlogSection /></div>}
         </main>
       </AlertProvider>
     </ChakraProvider>
