@@ -1,13 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
-import {
-  faFacebook,
-  faGithub,
-  faLinkedin,
-  faTwitter,
-} from '@fortawesome/free-brands-svg-icons';
-import { Box, HStack, Text } from '@chakra-ui/react';
+import { faBars, faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faGithub, faLinkedin, faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { Box, HStack, IconButton, Stack, VStack, useBreakpointValue } from '@chakra-ui/react';
 
 const socials = [
   {
@@ -38,6 +33,8 @@ const socials = [
 
 const Header = ({ onShowAbout, onShowBlog }) => {
   const headerRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const isMobile = useBreakpointValue({ base: true, md: false });
 
   useEffect(() => {
     let prevScrollPos = window.scrollY;
@@ -77,6 +74,8 @@ const Header = ({ onShowAbout, onShowBlog }) => {
     }
   };
 
+  const toggleMenu = () => setIsOpen(!isOpen);
+
   return (
     <Box
       position="fixed"
@@ -90,55 +89,86 @@ const Header = ({ onShowAbout, onShowBlog }) => {
       transitionTimingFunction="ease-in-out"
       ref={headerRef}
       backgroundColor="#18181b"
-      zIndex={1000} // Assurez-vous que le header reste au-dessus des autres contenus
+      zIndex={1000}
     >
       <Box color="white" maxWidth="100%" margin="0 auto">
-        <HStack
-          px={16}
+        <Stack
+          px={{ base: 4, md: 16 }}
           py={4}
           justifyContent="space-between"
           alignItems="center"
+          direction={{ base: 'row' }}
         >
-          <nav>
-            <HStack spacing={8}>
-              {socials.map((social, index) => (
-                social.number ? (
-                  <HStack key={index} spacing={2}>
-                    <FontAwesomeIcon icon={social.icon} size="lg" />
-                    <Text fontSize="xl" color="white">
-                      {social.number}
-                    </Text>
-                  </HStack>
-                ) : (
-                  <a
-                    key={social.url}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <FontAwesomeIcon icon={social.icon} size="2x" />
-                  </a>
-                )
-              ))}
-            </HStack>
-          </nav>
-          <nav>
-            <HStack spacing={8}>
-              <a href="#about" onClick={handleClick('about', onShowAbout)}>
-                About
-              </a>
-              <a href="#projects" onClick={handleClick('projects')}>
-                Projects
-              </a>
-              <a href="#contactme" onClick={handleClick('contactme')}>
-                Contact Me
-              </a>
-              <a href="#blog" onClick={handleClick('blog', onShowBlog)}>
-                Blog
-              </a>
-            </HStack>
-          </nav>
-        </HStack>
+          <IconButton
+            display={{ base: 'flex', md: 'none' }}
+            icon={<FontAwesomeIcon icon={faBars} />}
+            onClick={toggleMenu}
+            variant="ghost"
+            aria-label="Open Menu"
+          />
+          <HStack spacing={4} display={{ base: 'none', md: 'flex' }}>
+            {socials.map((social, index) => (
+              social.number ? (
+                <HStack key={index} spacing={2}>
+                  <FontAwesomeIcon icon={social.icon} size="lg" />
+                  <Box fontSize="xl" color="white">
+                    {social.number}
+                  </Box>
+                </HStack>
+              ) : (
+                <a
+                  key={social.url}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon icon={social.icon} size="2x" />
+                </a>
+              )
+            ))}
+          </HStack>
+          <HStack spacing={{ base: 2, md: 8 }} display={{ base: isOpen ? 'flex' : 'none', md: 'flex' }}>
+            <a href="#about" onClick={handleClick('about', onShowAbout)}>
+              About
+            </a>
+            <a href="#projects" onClick={handleClick('projects')}>
+              Projects
+            </a>
+            <a href="#contactme" onClick={handleClick('contactme')}>
+              Contact Me
+            </a>
+            <a href="#blog" onClick={handleClick('blog', onShowBlog)}>
+              Blog
+            </a>
+          </HStack>
+        </Stack>
+        {isOpen && (
+          <VStack
+            spacing={4}
+            display={{ base: 'flex', md: 'none' }}
+            mt={4}
+          >
+            {socials.map((social, index) => (
+              social.number ? (
+                <HStack key={index} spacing={2}>
+                  <FontAwesomeIcon icon={social.icon} size="lg" />
+                  <Box fontSize="xl" color="white">
+                    {social.number}
+                  </Box>
+                </HStack>
+              ) : (
+                <a
+                  key={social.url}
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FontAwesomeIcon icon={social.icon} size="2x" />
+                </a>
+              )
+            ))}
+          </VStack>
+        )}
       </Box>
     </Box>
   );

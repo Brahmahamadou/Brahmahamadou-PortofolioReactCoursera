@@ -1,36 +1,21 @@
-import * as React from "react";
-import { VStack, IconButton } from "@chakra-ui/react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowCircleDown } from '@fortawesome/free-solid-svg-icons';
-import './FullScreenSection.css'; // Assurez-vous d'importer le fichier CSS
+import { Box, VStack } from '@chakra-ui/react';
 
-const FullScreenSection = ({ children, isDarkBackground, showScrollIcon, ...boxProps }) => {
-  const handleScrollDown = () => {
-    window.scrollTo({
-      top: window.innerHeight,
-      behavior: 'smooth'
-    });
-  };
-
+const FullScreenSection = ({ children, isDarkBackground, backgroundColor, ...rest }) => {
   return (
-    <VStack
-      backgroundColor={boxProps.backgroundColor}
-      color={isDarkBackground ? "white" : "black"}
+    <Box
+      minHeight="100vh"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+      backgroundColor={backgroundColor}
+      color={isDarkBackground ? 'white' : 'black'}
+      {...rest}
     >
-      <VStack maxWidth="1280px" minHeight="100vh" {...boxProps} position="relative">
+      <VStack spacing={8} width="full" px={{ base: 4, md: 8 }}>
         {children}
-        {showScrollIcon && (
-          <IconButton
-            icon={<FontAwesomeIcon icon={faArrowCircleDown} />}
-            size="lg"
-            variant="unstyled"
-            aria-label="Scroll Down"
-            className="scroll-down-icon"
-            onClick={handleScrollDown}
-          />
-        )}
       </VStack>
-    </VStack>
+    </Box>
   );
 };
 

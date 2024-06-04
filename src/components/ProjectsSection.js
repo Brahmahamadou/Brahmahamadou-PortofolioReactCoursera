@@ -1,4 +1,3 @@
-// ProjectsSection.js
 import React from "react";
 import FullScreenSection from "./FullScreenSection";
 import { Box, Heading } from "@chakra-ui/react";
@@ -39,14 +38,14 @@ const ProjectsSection = () => {
       p={8}
       alignItems="flex-start"
       spacing={8}
-      showScrollIcon={true} // Affichez l'icône de défilement
+      showScrollIcon={true}
     >
       <Heading as="h1" id="projects-section" color="white">
         Featured Projects
       </Heading>
       <Box
         display="grid"
-        gridTemplateColumns="repeat(2, minmax(0, 1fr))"
+        gridTemplateColumns={{ base: '1fr', md: 'repeat(2, minmax(0, 1fr))' }}
         gridGap={8}
       >
         {projects.map((project) => (
@@ -56,8 +55,6 @@ const ProjectsSection = () => {
             description={project.description}
             url={project.url}
             imageSrc={project.getImageSrc()}
-            height="500px"
-            // Spécifiez la hauteur souhaitée ici
           />
         ))}
       </Box>

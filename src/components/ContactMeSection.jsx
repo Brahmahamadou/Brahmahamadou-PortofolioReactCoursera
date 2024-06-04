@@ -55,7 +55,11 @@ const ContactMeSection = () => {
       py={16}
       spacing={8}
     >
-      <VStack w="1024px" p={32} alignItems="flex-start">
+      <VStack
+        w={{ base: '90%', md: '80%', lg: '1024px' }}
+        p={{ base: 4, md: 16, lg: 32 }}
+        alignItems="flex-start"
+      >
         <Heading as="h1" id="contactme-section">
           Contact me
         </Heading>
@@ -63,9 +67,7 @@ const ContactMeSection = () => {
           <form onSubmit={formik.handleSubmit}>
             <VStack spacing={4}>
               <FormControl
-                isInvalid={
-                  formik.touched.firstName && !!formik.errors.firstName
-                }
+                isInvalid={formik.touched.firstName && !!formik.errors.firstName}
               >
                 <FormLabel htmlFor="firstName">Name</FormLabel>
                 <Input
@@ -78,9 +80,7 @@ const ContactMeSection = () => {
                 </FormErrorMessage>
               </FormControl>
               <FormControl
-                isInvalid={
-                  formik.touched.email && !!formik.errors.email
-                }
+                isInvalid={formik.touched.email && !!formik.errors.email}
               >
                 <FormLabel htmlFor="email">Email Address</FormLabel>
                 <Input
@@ -94,9 +94,7 @@ const ContactMeSection = () => {
                 </FormErrorMessage>
               </FormControl>
               <FormControl
-                isInvalid={
-                  formik.touched.type && !!formik.errors.type
-                }
+                isInvalid={formik.touched.type && !!formik.errors.type}
               >
                 <FormLabel htmlFor="type">Type of enquiry</FormLabel>
                 <Select
@@ -105,9 +103,7 @@ const ContactMeSection = () => {
                   {...formik.getFieldProps('type')}
                 >
                   <option value="hireMe">Freelance project proposal</option>
-                  <option value="openSource">
-                    Open source consultancy session
-                  </option>
+                  <option value="openSource">Open source consultancy session</option>
                   <option value="other">Other</option>
                 </Select>
                 <FormErrorMessage>
@@ -115,9 +111,7 @@ const ContactMeSection = () => {
                 </FormErrorMessage>
               </FormControl>
               <FormControl
-                isInvalid={
-                  formik.touched.comment && !!formik.errors.comment
-                }
+                isInvalid={formik.touched.comment && !!formik.errors.comment}
               >
                 <FormLabel htmlFor="comment">Your message</FormLabel>
                 <Textarea
